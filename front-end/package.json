@@ -1,0 +1,13 @@
+{
+  "name": "local-service-monitor",
+  "version": "1.0.0",
+  "description": "Aplicação para monitorar serviço local com arquivos separados",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["nodejs", "http", "monitor", "localhost"],
+  "author": "Seu Nome",
+  "license": "MIT"
+}

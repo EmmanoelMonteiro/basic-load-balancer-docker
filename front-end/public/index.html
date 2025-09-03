@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor do Serviço Local</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Status do Serviço Local</h1>
+            <p>Monitoramento em tempo real do serviço na porta 80</p>
+        </div>
+
+        <div id="loading" class="loading">
+            <div class="spinner"></div>
+            <p>Carregando dados...</p>
+        </div>
+
+        <div id="error" class="error hidden">
+            <h3>❌ Erro ao carregar dados</h3>
+            <p id="error-message"></p>
+            <button onclick="loadData()" class="retry-btn">Tentar Novamente</button>
+        </div>
+
+        <div id="content" class="hidden">
+            <div class="message">
+                <span id="message-text"></span>
+            </div>
+
+            <div class="status-card">
+                <div class="status-item">
+                    <span class="label">🖥️ Instância:</span>
+                    <span class="value" id="instance-value"></span>
+                </div>
+                <div class="status-item">
+                    <span class="label">🌐 IP do Cliente:</span>
+                    <span class="value" id="clientIP-value"></span>
+                </div>
+                <div class="status-item">
+                    <span class="label">⚡ Método:</span>
+                    <span class="value" id="method-value"></span>
+                </div>
+                <div class="status-item">
+                    <span class="label">🛣️ Caminho:</span>
+                    <span class="value" id="path-value"></span>
+                </div>
+            </div>
+
+            <div class="timestamp">
+                ⏰ Última atualização: <span id="timestamp-value"></span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="loadData()" class="refresh-btn">
+                🔄 Atualizar Dados
+            </button>
+            <button onclick="startAutoRefresh()" class="auto-refresh-btn" id="auto-refresh-btn">
+                ⏰ Auto-Refresh (10s)
+            </button>
+            <button onclick="stopAutoRefresh()" class="stop-refresh-btn hidden" id="stop-refresh-btn">
+                ⏹️ Parar Auto-Refresh
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>Serviço monitorado: http://localhost:80</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

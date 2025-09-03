@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  nginx:
+    build: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - app1
+      - app2
+      - app3
+    networks:
+      - cloud-network
+
+  app1:
+    build: ./backend-app
+    environment:
+      - INSTANCE_NAME=app1
+      - PORT=3000
+    networks:
+      - cloud-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  app2:
+    build: ./backend-app
+    environment:
+      - INSTANCE_NAME=app2
+      - PORT=3000
+    networks:
+      - cloud-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  app3:
+    build: ./backend-app
+    environment:
+      - INSTANCE_NAME=app3
+      - PORT=3000
+    networks:
+      - cloud-network
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://localhost:3000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  cloud-network:
+    driver: bridge

@@ -1,0 +1,13 @@
+{
+  "name": "backend-app",
+  "version": "1.0.0",
+  "description": "Backend application with native Node.js HTTP",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "keywords": ["load-balancer", "nodejs", "http"],
+  "author": "Your Name",
+  "license": "MIT"
+}
